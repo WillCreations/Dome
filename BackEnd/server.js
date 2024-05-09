@@ -135,5 +135,5 @@ connectToDb(
 );
 
 httpServer.listen(webPort, () => {
-  console.log(`socket is Listening on port 4500`);
+  console.log(`socket is Listening on port ${webPort}`);
 });
