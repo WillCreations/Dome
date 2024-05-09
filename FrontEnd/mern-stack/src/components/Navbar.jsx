@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Notification from "./Notification";
 
 import { useAuthContext } from "../hooks/useAuthContext";
-import useLogout from "../hooks/uselogout";
+import useLogout from "../hooks/useLogout";
 const Navbar = () => {
   const { session } = useAuthContext();
   const { logout } = useLogout();

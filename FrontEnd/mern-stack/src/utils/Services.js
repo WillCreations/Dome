@@ -1,6 +1,7 @@
 import React from "react";
+const apiUrl = import.meta.env.VITE_API_URL;
 
-export const baseUrl = "http://localhost:4000/api";
+export const baseUrl = `${apiUrl}/api`;
 
 export const PostRequest = async (url, body) => {
   const response = await fetch(url, {

@@ -1,6 +1,7 @@
 import { createContext, useCallback, useEffect, useState } from "react";
 import { baseUrl, PostRequest, getRequest } from "../utils/Services";
 import io from "socket.io-client";
+const webSocketUrl = import.meta.env.VITE_WEBSOCKET_URL;
 
 const ChatContext = createContext();
 
@@ -20,7 +21,7 @@ export const ChatContextProvider = ({ children, user }) => {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:4500");
+    const newSocket = io(webSocketUrl);
     setSocket(newSocket);
     newSocket.on("connection", (message) => {
       console.log(message);

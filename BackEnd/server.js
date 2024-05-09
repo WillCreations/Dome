@@ -14,7 +14,15 @@ const { Server } = require("socket.io");
 const app = express();
 
 //cross origin resourse sharing
-app.use(cors({ origin: ["http://271.0.0.1:5173", "http://localhost:5173"] }));
+app.use(
+  cors({
+    origin: [
+      "http://271.0.0.1:5173",
+      "http://localhost:5173",
+      process.env.FRONTEND_URL,
+    ],
+  })
+);
 
 //create http server
 // const httpServer = http.createServer(app);
@@ -31,7 +39,11 @@ const httpServer = http.createServer(app);
 // const io = socketIo(httpServer);
 const io = new Server(httpServer, {
   cors: {
-    origin: ["http://localhost:5173", "http://271.0.0.1:5173"],
+    origin: [
+      "http://localhost:5173",
+      "http://271.0.0.1:5173",
+      process.env.FRONTEND_URL,
+    ],
   },
 });
 
@@ -113,6 +125,7 @@ io.on("connection", (socket) => {
 });
 
 const port = process.env.PORT;
+const webPort = process.env.WEB_PORT;
 
 //listen for request
 connectToDb(
@@ -121,6 +134,6 @@ connectToDb(
   })
 );
 
-httpServer.listen(4500, () => {
+httpServer.listen(webPort, () => {
   console.log(`socket is Listening on port 4500`);
 });
