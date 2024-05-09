@@ -1,6 +1,6 @@
 import { useChatContext } from "../hooks/useChatContext";
 import UserChats from "../components/UserChats";
-import PotentialChats from "../components/potentialChats";
+import PotentialChats from "../components/PotentialChats";
 import ChatBox from "../components/ChatBox";
 
 const Chat = () => {
