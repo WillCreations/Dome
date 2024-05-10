@@ -8,7 +8,7 @@ const io = new Server(httpServer, {
     origin: [
       "http://localhost:5173",
       "http://271.0.0.1:5173",
-      process.env.FRONTEND_URL,
+      `${process.env.FRONTEND_URL}`,
     ],
   },
 });
