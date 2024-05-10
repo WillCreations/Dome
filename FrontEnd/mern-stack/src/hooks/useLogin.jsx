@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+const url = import.meta.env.VITE_API_URL;
 
 const useLogin = () => {
   const [LoginState, setLoginState] = useState({
@@ -9,12 +10,12 @@ const useLogin = () => {
   });
 
   const { dispatch } = useAuthContext();
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const login = async (user) => {
     const { email, password } = user;
     setLoginState({ ...LoginState, isLoading: true, error: null });
-    const response = await fetch("http://localhost:4000/api/user/login", {
+    const response = await fetch(`${url}/api/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +31,7 @@ const useLogin = () => {
       localStorage.setItem("session", JSON.stringify(json));
       dispatch({ type: "LOGIN", payload: json });
       setLoginState({ ...LoginState, isLoading: false });
-      navigate("/", {replace: true})
+      navigate("/", { replace: true });
     }
   };
   return { login, LoginState };
