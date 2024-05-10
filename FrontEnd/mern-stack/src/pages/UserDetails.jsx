@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Table from "../components/Table";
+const url = import.meta.env.VITE_API_URL;
 
 const UserDetails = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const UserDetails = () => {
     let send = !boolean;
     console.log("send: ", send);
 
-    const response = await fetch(`http://localhost:4000/api/user/${userId}`, {
+    const response = await fetch(`${url}/api/user/${userId}`, {
       method: "PATCH",
       body: JSON.stringify({ admin: send }),
       headers: {
@@ -29,7 +30,7 @@ const UserDetails = () => {
 
   const Details = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/user/${id}`);
+      const response = await fetch(`${url}/api/user/${id}`);
       const json = await response.json();
 
       setSingle(json);
@@ -44,7 +45,7 @@ const UserDetails = () => {
 
   const Populate = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/user`);
+      const response = await fetch(`${url}/api/user`);
       const json = await response.json();
       setMany([...json]);
     } catch (error) {
