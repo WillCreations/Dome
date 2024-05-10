@@ -19,6 +19,9 @@ app.use(
       "http://localhost:5173",
       `${process.env.FRONTEND_URL}`,
     ],
+    methods: ["GET", "POST"], // Specify allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers (if needed)
+    credentials: true, // Allow credentials (cookies) if required
   })
 );
 

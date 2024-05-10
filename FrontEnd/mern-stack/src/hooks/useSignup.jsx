@@ -12,6 +12,8 @@ const useSignup = () => {
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
+  console.log("url: ", url);
+
   const signup = async (user) => {
     const { name, email, password } = user;
     setSignupState({ ...signupState, isLoading: true, error: null });
