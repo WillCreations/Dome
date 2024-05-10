@@ -5,12 +5,13 @@ require("dotenv").config();
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "http://271.0.0.1:5173",
-      `${process.env.FRONTEND_URL}`,
-    ],
-    methods: ["GET", "POST"], // Specify allowed HTTP methods
+    origin: "*",
+    //    [
+    //   "http://localhost:5173",
+    //   "http://271.0.0.1:5173",
+    //   `${process.env.FRONTEND_URL}`,
+    // ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Specify allowed HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers (if needed)
     credentials: true, // Allow credentials (cookies) if required
   },
